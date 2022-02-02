@@ -1,0 +1,29 @@
+body {
+  background-color: rgb(233, 215, 207);
+  text-align: center;
+  font-family: "Oswald", sans-serif;
+}
+h1 {
+  color: cadetblue;
+  font-weight: bold;
+}
+h2 {
+  color: brown;
+}
+
+p {
+  font-family: "Fira Sans", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.smaller {
+  font-size: 20px;
+  color: blueviolet;
+}

@@ -1,5 +1,4 @@
 body {
-  text-align: center;
   background-color: rgb(233, 215, 207);
   margin: 50px;
 }
@@ -9,22 +8,11 @@ img {
   border-radius: 100px;
 }
 h1 {
-  font-family: "Oswald", sans-serif;
   color: red;
 }
 
 p {
-  font-family: "Fira Sans", sans-serif;
   color: rgb(228, 174, 74);
-}
-
-a {
-  color: rgb(167, 1, 78);
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
 }
 
 #todays-challenge {
