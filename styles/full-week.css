@@ -1,5 +1,25 @@
-li {
-  /* font-family: "Fira Sans", sans-serif;
-  font-weight: 700; */
+h1 {
+  font-size: 48px;
+}
+
+ul {
+  font-family: "Fira Sans", sans-serif;
   list-style: none;
+}
+
+li {
+  margin: 10px;
+  background-color: rgb(223, 163, 124);
+  border-radius: 6px;
+}
+
+a {
+  background-color: rgb(199, 223, 135);
+  border-radius: 4px;
+}
+
+a:hover {
+  color: white;
+  background-color: rgb(180, 12, 91);
+  text-decoration: none;
 }
