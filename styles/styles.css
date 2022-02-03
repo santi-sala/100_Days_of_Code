@@ -6,17 +6,33 @@ img {
   width: 200px;
   height: 200px;
   border-radius: 100px;
+  border: solid 5px black;
+  margin-bottom: -180px;
+}
+
+main {
+  border: solid 5px black;
+  margin: 70px;
+  padding: 20px;
+  background-color: rgb(206, 121, 25);
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
 }
 h1 {
-  color: red;
+  margin-top: 90px;
+  color: rgb(22, 25, 44);
 }
 
 p {
-  color: rgb(228, 174, 74);
+  color: rgb(100, 77, 34);
 }
 
 #todays-challenge {
-  color: rgb(170, 96, 83);
+  color: rgb(22, 25, 44);
   font-weight: bold;
   font-size: 52px;
+}
+
+#date {
+  color: brown;
 }
