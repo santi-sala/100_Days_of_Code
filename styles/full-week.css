@@ -1,12 +1,11 @@
-/* HEADER */
+/* *************** HEADER *************** */
 h1 {
   color: rgb(105, 97, 24);
   font-size: 48px;
   margin: 15px 0;
 }
 
-/* MAIN */
-
+/* *************** MAIN *************** */
 h2 {
   text-decoration: underline rgb(68, 194, 68);
   /* border-bottom: 3px solid rgb(68, 194, 68); */
@@ -22,14 +21,6 @@ h3 {
 main p {
   margin: 8px;
   color: rgb(221, 87, 63);
-}
-.highlight-goal {
-  background-color: rgb(218, 119, 54);
-}
-
-.highlight-goal p {
-  color: rgb(226, 191, 185);
-  font-weight: bold;
 }
 
 ul {
@@ -47,15 +38,24 @@ li {
   border-radius: 6px;
 }
 
+.highlight-goal {
+  background-color: rgb(218, 119, 54);
+}
+
+.highlight-goal p {
+  color: rgb(226, 191, 185);
+  font-weight: bold;
+}
+
+/* *************** FOOTER *************** */
+footer {
+  margin-top: 50px;
+}
+
 a {
   margin-top: 30px;
   background-color: rgb(199, 223, 135);
   border-radius: 4px;
-}
-
-/* FOOTER */
-footer {
-  margin-top: 50px;
 }
 
 a:hover {
