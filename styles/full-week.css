@@ -1,12 +1,16 @@
+/* HEADER */
 h1 {
   color: rgb(105, 97, 24);
   font-size: 48px;
   margin: 15px 0;
 }
 
+/* MAIN */
+
 h2 {
-  border-bottom: 3px solid rgb(68, 194, 68);
-  font-size: 30px;
+  text-decoration: underline rgb(68, 194, 68);
+  /* border-bottom: 3px solid rgb(68, 194, 68); */
+  font-size: 35px;
 }
 h3 {
   color: rgb(78, 13, 5);
@@ -17,7 +21,15 @@ h3 {
 
 main p {
   margin: 8px;
-  color: rgb(71, 29, 22);
+  color: rgb(221, 87, 63);
+}
+.highlight-goal {
+  background-color: rgb(218, 119, 54);
+}
+
+.highlight-goal p {
+  color: rgb(226, 191, 185);
+  font-weight: bold;
 }
 
 ul {
@@ -39,6 +51,11 @@ a {
   margin-top: 30px;
   background-color: rgb(199, 223, 135);
   border-radius: 4px;
+}
+
+/* FOOTER */
+footer {
+  margin-top: 50px;
 }
 
 a:hover {
