@@ -1,10 +1,23 @@
 h1 {
+  color: rgb(105, 97, 24);
   font-size: 48px;
   margin: 15px 0;
 }
 
 h2 {
   border-bottom: 3px solid rgb(68, 194, 68);
+  font-size: 30px;
+}
+h3 {
+  color: rgb(78, 13, 5);
+  font-size: 22px;
+  font-family: "Oswald", sans-serif;
+  margin: 8px;
+}
+
+main p {
+  margin: 8px;
+  color: rgb(71, 29, 22);
 }
 
 ul {
