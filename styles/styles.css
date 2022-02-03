@@ -12,7 +12,7 @@ img {
 
 main {
   border: solid 5px black;
-  margin: 70px;
+  margin: 70px auto;
   padding: 20px;
   background-color: rgb(206, 121, 25);
   border-radius: 10px;

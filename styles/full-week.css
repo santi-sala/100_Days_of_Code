@@ -52,17 +52,3 @@ li {
 footer {
   margin-top: 50px;
 }
-
-a {
-  margin-top: 30px;
-  padding: 1px 3px;
-  background-color: rgb(199, 223, 135);
-  border-radius: 4px;
-}
-
-a:hover {
-  padding: 3px 6px;
-  color: white;
-  background-color: rgb(180, 12, 91);
-  text-decoration: none;
-}

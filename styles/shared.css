@@ -16,11 +16,17 @@ p {
 }
 
 a {
-  text-decoration: none;
+  margin-top: 30px;
+  padding: 1px 3px;
+  background-color: rgb(199, 223, 135);
+  border-radius: 4px;
 }
 
 a:hover {
-  text-decoration: underline;
+  padding: 3px 6px;
+  color: white;
+  background-color: rgb(180, 12, 91);
+  text-decoration: none;
 }
 
 .smaller {
