@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML & CSS Basics Summary</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles/style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>HTML & CSS Basics Summary</h1>
+      <img src="./images/html-css.png" alt="" />
+    </header>
+    <main>
+      <article>
+        <h2>HTML Summary</h2>
+        <p>
+          HTML (Hyper Markup Language) is used to define our page content,
+          structure and meaning. You <span id="be-bold">dont't</span> use it for
+          styling purposes. Use CSS for that instead!
+        </p>
+        <ul>
+          <li class="list-with-border">
+            HTML uses "elements" to describe (annotate) content
+          </li>
+          <li>
+            HTML elements typically have an opening tag, content and then a
+            closing tag.
+          </li>
+          <li class="list-with-border">
+            You can have void (empty) elements likes images
+          </li>
+          <li class="list-with-border">
+            You can also have configure elements with attributes
+          </li>
+          <li>
+            There's a long list of available elements but you'll gain experience
+            over time, no worries.
+          </li>
+        </ul>
+        <p>
+          Learn more about all available HTML elements on
+          <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element"
+            >the MDN HTML elements reference</a
+          >.
+        </p>
+        <h2>CSS Summary</h2>
+        <p>
+          CSS (Cascading Style Sheets) is used for styling your page content.
+        </p>
+        <ul>
+          <li>Styles are assigned via property-value pairs.</li>
+          <li>You can assign styles via the "style" attribute</li>
+          <li class="list-with-border">
+            To avoid code duplication, you can typically use global styles (e.g.
+            via the "style" element) instead.
+          </li>
+          <li>
+            Alternatively, you can work with external stylesheet files which you
+            "link" to
+          </li>
+          <li class="list-with-border">
+            When working with CSS, conscepts like "inheritabce", "specificity"
+            and "box model" should be understood.
+          </li>
+        </ul>
+        <p>
+          Learn more about all available CSS properties and values on
+          <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference"
+            >the MDN CSS property reference</a
+          >.
+        </p>
+      </article>
+    </main>
+    <section>
+      <a href="./../Resources/html-css-basics-summary.pdf"
+        >Download PDF Summary</a
+      >
+    </section>
+    <footer>
+      <p>(c) Academind GmbH</p>
+    </footer>
+  </body>
+</html>
