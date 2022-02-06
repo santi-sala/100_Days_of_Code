@@ -10,7 +10,7 @@ h1 {
 
 header img {
   display: inline-block;
-  width: 300;
+  width: 300px;
   margin-top: 10px;
   margin-bottom: 35px;
 }
@@ -24,23 +24,25 @@ main {
 }
 
 article {
-  padding: 30px;
+  padding: 32px;
 }
 
 ul {
   padding: 0px;
+  margin: 0px;
+  list-style: none;
 }
 
 li {
-  list-style: none;
-  margin: 15px 0px;
-  padding-left: 13px;
+  margin: 14px 0px;
+  padding-left: 10px;
+  border-left: 3px solid transparent;
 }
 
 .list-with-border {
   padding-left: 10px;
-  border-left: 3px solid yellow;
   color: yellow;
+  border-color: yellow;
 }
 
 article a {
@@ -51,6 +53,11 @@ article a {
   padding: 2px 5px;
 }
 
+article a:hover,
+article a:active {
+  background-color: rgb(250, 201, 391);
+}
+
 #be-bold {
   font-weight: 700;
 }
@@ -58,12 +65,18 @@ article a {
 section a {
   display: inline-block;
   margin: 25px auto;
-  padding: 15px;
-  background-color: rgb(222, 224, 86);
+  padding: 12px 20px;
+  background-color: rgb(250, 201, 39);
   text-decoration: none;
   border-radius: 10px;
-  color: brown;
+  color: rgb(66, 51, 4);
 }
 
-footer {
+section a:hover,
+section a:active {
+  background-color: rgb(247, 209, 85);
+}
+
+footer p {
+  color: rgb(131, 113, 149);
 }
