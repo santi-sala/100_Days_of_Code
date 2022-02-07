@@ -17,6 +17,7 @@ main {
   background-color: rgb(206, 121, 25);
   border-radius: 10px;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  width: 800px;
 }
 h1 {
   margin-top: 90px;
