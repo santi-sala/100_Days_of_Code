@@ -16,13 +16,34 @@ main li {
   background-color: white;
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
   border-radius: 6px;
+  overflow: hidden;
 }
 
 main li img {
   width: 300px;
   height: 280px;
+  object-fit: cover;
 }
 
 .item-content {
   padding: 24px;
+  color: rgb(49, 48, 48);
+}
+
+.item-content a {
+  text-decoration: none;
+  color: rgb(11, 207, 241);
+}
+
+.item-content a:hover {
+  border-radius: 8px;
+  background-color: aqua;
+  padding: 2px 4px;
+  color: brown;
+}
+
+.action {
+  display: flex;
+  justify-content: end;
+  align-content: flex-end;
 }
