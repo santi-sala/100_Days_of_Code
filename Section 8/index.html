@@ -4,34 +4,45 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>WebFood</title>
+    <link rel="stylesheet" href="" />
   </head>
   <body>
-    <header>
+    <header id="main-header">
       <nav>
-        <a href="./index.html">Webfood</a>
+        <a href="./index.html" id="main-logo">WebFood</a>
         <ul>
-          <li><a href="./pages/meals.html">Browse Meals</a></li>
-          <li><a href="./pages/orders.html">My Orders</a></li>
+          <li><a href="">Browse Meals</a></li>
+          <li><a href="">My Orders</a></li>
         </ul>
       </nav>
     </header>
     <main>
       <h1>Browse Our Delicious Meals</h1>
-      <section>
+      <section id="latest-products">
         <ul>
-          <li>
+          <li class="food-items">
             <article>
-              <img src="" alt="" />
-              <h2>Risotto with Tiger Prawns</h2>
-              <a href="">Add to Cart</a>
+              <img
+                src="./images/risotto.jpg"
+                alt="Risotto with tiger prawns."
+              />
+              <div class="food-item-content">
+                <h2>Risotto with Tiger Prawns</h2>
+                <a href="" class="btn">Add to Cart</a>
+              </div>
             </article>
           </li>
-          <li>
+          <li class="food-items">
             <article>
-              <img src="" alt="" />
-              <h2>Cheeseburgers</h2>
-              <a href="">Add to charset</a>
+              <img
+                src="./images/cheeseburgers.jpg"
+                alt="Two cheeseburgers with french fries."
+              />
+              <div class="food-item-content">
+                <h2>Cheeseburgers</h2>
+                <a href="" class="btn">Add to Cart</a>
+              </div>
             </article>
           </li>
         </ul>
