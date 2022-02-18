@@ -1,0 +1,110 @@
+html {
+  --roboto: "Roboto", sans-serif;
+  --aquamarine-100: rgb(227, 248, 242);
+  --aquamarine-500: rgb(127, 180, 165);
+  --grey-900: rgb(156, 156, 161);
+}
+
+body {
+  background-color: var(--aquamarine-100);
+  font-family: var(--roboto);
+}
+
+header {
+  text-align: center;
+  font-weight: 700;
+}
+
+h2 {
+  margin: 1rem auto;
+}
+
+main {
+  margin: 1rem auto;
+  width: 600px;
+  border: 2px solid var(--grey-900);
+  padding: 0 1rem;
+  border-radius: 5px;
+  box-shadow: 1px 1px 1px 1px rgb(73, 73, 75);
+  padding-bottom: 1.5rem;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.2rem;
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  margin-bottom: 0.5rem;
+  padding: 0.3rem;
+  box-sizing: border-box;
+  border: 2px solid var(--grey-900);
+  border-radius: 5px;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  background-color: var(--aquamarine-500);
+  border: 2px solid rgb(241, 155, 155);
+}
+
+textarea {
+  resize: none;
+}
+
+.radio-inline,
+.checkbox-inline {
+  /* display: inline-block; */
+  display: flex;
+}
+
+.radio-inline input,
+.checkbox-inline input {
+  width: auto;
+  margin-right: 0.5rem;
+}
+
+.checkbox-inline {
+  margin-top: 1rem;
+}
+
+#buttons {
+  display: flex;
+  justify-content: end;
+}
+
+.btn-clear,
+.btn-submit {
+  width: 5rem;
+  margin-left: 0.2rem;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 0.3rem;
+}
+
+.btn-clear {
+  border: 2px solid rgb(51, 32, 223);
+}
+
+.btn-clear:hover {
+  background-color: aqua;
+}
+
+.btn-submit {
+  background-color: blue;
+  color: white;
+}
+
+.btn-submit:hover {
+  background-color: brown;
+}

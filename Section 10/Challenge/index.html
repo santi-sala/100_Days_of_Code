@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Day29 Challenge</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Contact Us</h1>
+    </header>
+    <main>
+      <form action="GET">
+        <h2>How can we help you?</h2>
+
+        <section id="user-info">
+          <ul>
+            <li>
+              <label for="user-name">Your name</label>
+              <input type="text" name="username" id="user-name" required />
+            </li>
+            <li>
+              <label for="user-email">Your E-mail Address</label>
+              <input type="email" name="email" id="user-email" required />
+            </li>
+            <li>
+              <label for="phone-number">Your Phone Number</label>
+              <input type="tel" name="phonenumber" id="phone-number" />
+            </li>
+          </ul>
+        </section>
+
+        <section id="message">
+          <label for="user-message">Your Message</label>
+          <textarea
+            name="message"
+            id="user-message"
+            cols="30"
+            rows="10"
+          ></textarea>
+        </section>
+
+        <section id="how-to-find">
+          <label for="find-us">How did you find us?</label>
+          <select name="finding" id="find-us">
+            <option value="web-search">Web Search</option>
+            <option value="flyer">Flyer</option>
+            <option value="radio">Radio</option>
+            <option value="tv">TV</option>
+          </select>
+        </section>
+
+        <section id="how-to-reply">
+          <h2>How should we reply?</h2>
+          <ul>
+            <li class="radio-inline">
+              <input type="radio" name="reply" id="call-me" value="call" />
+              <label for="call-me">Call me</label>
+            </li>
+            <li class="radio-inline">
+              <input type="radio" name="reply" id="email-me" value="email" />
+              <label for="email-me">Send me an email</label>
+            </li>
+            <li class="radio-inline">
+              <input
+                type="radio"
+                name="reply"
+                id="dont-reply"
+                value="no-reply"
+              /><label for="dont-reply">Don't reply</label>
+            </li>
+          </ul>
+
+          <div class="checkbox-inline">
+            <input type="checkbox" name="terms" id="accept-terms" required />
+            <label for="accept-terms">Accept Terms</label>
+          </div>
+        </section>
+
+        <section id="buttons">
+          <button class="btn-clear" type="reset">Clear</button>
+          <button class="btn-submit" type="submit">Submit</button>
+        </section>
+      </form>
+    </main>
+  </body>
+</html>
