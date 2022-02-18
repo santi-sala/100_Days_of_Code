@@ -52,6 +52,10 @@ textarea:focus {
   border: 3px solid var(--color-purple-600);
 }
 
+textarea {
+  resize: none;
+}
+
 button {
   display: block;
   font: inherit;
