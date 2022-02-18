@@ -18,10 +18,9 @@
       <h1>Contact Us</h1>
     </header>
     <main>
-      <form action="GET">
-        <h2>How can we help you?</h2>
-
+      <form action="./" method="GET">
         <section id="user-info">
+          <h2>How can we help you?</h2>
           <ul>
             <li>
               <label for="user-name">Your name</label>
@@ -33,7 +32,13 @@
             </li>
             <li>
               <label for="phone-number">Your Phone Number</label>
-              <input type="tel" name="phonenumber" id="phone-number" />
+              <input
+                type="tel"
+                name="phonenumber"
+                id="phone-number"
+                required
+                minlength="5"
+              />
             </li>
           </ul>
         </section>
@@ -45,12 +50,15 @@
             id="user-message"
             cols="30"
             rows="10"
+            required
+            minlength="10"
+            maxlength="200"
           ></textarea>
         </section>
 
         <section id="how-to-find">
           <label for="find-us">How did you find us?</label>
-          <select name="finding" id="find-us">
+          <select name="finding" id="find-us" required>
             <option value="web-search">Web Search</option>
             <option value="flyer">Flyer</option>
             <option value="radio">Radio</option>
@@ -62,11 +70,23 @@
           <h2>How should we reply?</h2>
           <ul>
             <li class="radio-inline">
-              <input type="radio" name="reply" id="call-me" value="call" />
+              <input
+                type="radio"
+                name="reply"
+                id="call-me"
+                value="call"
+                required
+              />
               <label for="call-me">Call me</label>
             </li>
             <li class="radio-inline">
-              <input type="radio" name="reply" id="email-me" value="email" />
+              <input
+                type="radio"
+                name="reply"
+                id="email-me"
+                value="email"
+                required
+              />
               <label for="email-me">Send me an email</label>
             </li>
             <li class="radio-inline">
@@ -75,14 +95,15 @@
                 name="reply"
                 id="dont-reply"
                 value="no-reply"
+                required
               /><label for="dont-reply">Don't reply</label>
             </li>
           </ul>
 
-          <div class="checkbox-inline">
+          <section class="checkbox-inline">
             <input type="checkbox" name="terms" id="accept-terms" required />
             <label for="accept-terms">Accept Terms</label>
-          </div>
+          </section>
         </section>
 
         <section id="buttons">
