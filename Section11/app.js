@@ -16,3 +16,9 @@ alert(
     ". One of his hobbies is: " +
     hobbies[0]
 );
+
+function alertUserInfo(userName, userAge, userJob) {
+  alert(userName + " is " + userAge + " and works as a " + userJob + ".");
+}
+
+alertUserInfo(myName, age, job.title);
