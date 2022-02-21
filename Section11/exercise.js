@@ -37,13 +37,17 @@ console.log(course.price);
 course.goals.forEach((element) => {
   console.log(element);
 });
+
+alert(course.goals[1]);
+
 // 5) Add a custom command that does the following:
 //    - Use your "main goals" variable and access an element by its identifier
-function GetGoals(index) {
+function getGoals(array, index) {
   if (index < 0 || index > course.goals.length - 1) {
     alert("No such goal...");
   } else {
-    alert("The goal number " + index + " is " + course.goals[index]);
+    index++;
+    alert("The goal number " + index + " is " + array[index - 1]);
   }
 }
 //    - The concrete identifier value should be dynamic / flexible
@@ -52,4 +56,4 @@ function GetGoals(index) {
 //      with ANY list of values
 //    - The custom command should provide the accessed value (i.e. the list element)
 // 6) Execute your custom command from (5) and output ("alert") the result
-GetGoals(2);
+getGoals(course.goals, 3);
