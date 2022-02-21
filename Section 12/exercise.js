@@ -4,6 +4,7 @@
 //    save it in a variable with a name of your choice
 console.dir(document);
 let myH1 = document.body.children[0];
+myH1 = document.body.firstElementChild;
 console.log(myH1);
 // 2. Use the variable from (1) and get access to the "parent"
 //    element of the stored <h1> element (i.e. to the <body> element)
