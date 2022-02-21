@@ -6,3 +6,14 @@ document.getElementById("external-link").href = "https://elotrolado.net";
 
 let anchorElement = document.querySelector("#external-link");
 anchorElement.href = "http://www.as.com";
+
+// Add an Element
+// 1. Create a the new element
+let newAnchorElement = document.createElement("a");
+newAnchorElement.textContent = "new link!!";
+newAnchorElement.href = "https://www.sport.es";
+// 2. Get access to the parent elemnt that should hold the new element
+let firstParagraph =
+  document.querySelector(".first-paragraph").nextElementSibling;
+// 3. Insert the new element into the parent element
+firstParagraph.append(newAnchorElement);
