@@ -17,3 +17,16 @@ let firstParagraph =
   document.querySelector(".first-paragraph").nextElementSibling;
 // 3. Insert the new element into the parent element
 firstParagraph.append(newAnchorElement);
+
+// REmove ELements
+// 1. Select element to remove
+let firstH1Element = document.querySelector("H1");
+// 2. Remove it
+// firstH1Element.remove();
+// firstH1Element.parentElement.removeChild(firstH1Element); // for older browsers!!
+
+// Move existing elemnts
+let myAnchor = document.querySelector("#external-link");
+myAnchor.textContent = "sup sup sup";
+// myAnchor.parentElement.append(myAnchor);
+firstH1Element.parentElement.insertBefore(myAnchor, firstH1Element);
