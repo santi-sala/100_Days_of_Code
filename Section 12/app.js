@@ -46,6 +46,7 @@ let counter = document.querySelector("#counter");
 counter.addEventListener("input", retieveUserInput);
 
 function retieveUserInput() {
-  let enteredText = counter.value;
+  // let enteredText = counter.value;
+  let enteredText = event.target.value;
   console.log(enteredText);
 }
