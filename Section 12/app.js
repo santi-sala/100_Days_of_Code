@@ -33,3 +33,19 @@ myAnchor.parentElement.append(myAnchor);
 
 //  innerHTML
 firstParagraph.innerHTML = "This is a<strong> INNER HTML </strong>.";
+
+// event listener
+let clickMe = document.querySelector(".click-me");
+
+clickMe.addEventListener("click", changeParagraphText);
+function changeParagraphText() {
+  clickMe.textContent = "YOU CLICKED ME";
+}
+
+let counter = document.querySelector("#counter");
+counter.addEventListener("input", retieveUserInput);
+
+function retieveUserInput() {
+  let enteredText = counter.value;
+  console.log(enteredText);
+}
