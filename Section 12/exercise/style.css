@@ -1,0 +1,47 @@
+body {
+  background-color: rgb(248, 232, 213);
+}
+
+form {
+  width: 70%;
+  margin: 5rem auto;
+  padding: 1.5rem;
+  background-color: rgb(191, 245, 245);
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+label {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+input {
+  display: inline-block;
+  margin: 0.5rem auto;
+  font: inherit;
+  border: 1px solid rgb(245, 117, 183);
+}
+
+input:focus {
+  border: 3px solid rgb(194, 73, 135);
+}
+
+.count {
+  padding-left: 0.5rem;
+}
+
+button {
+  display: block;
+  margin-top: 0.5rem;
+  padding: 0.3rem 0.8rem;
+  background-color: rgb(241, 204, 109);
+  border-radius: 3px;
+  border: 0;
+  color: rgb(63, 63, 55);
+}
+
+button:hover {
+  background-color: rgb(241, 190, 58);
+}
