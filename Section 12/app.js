@@ -46,7 +46,9 @@ let counter = document.querySelector("#counter");
 counter.addEventListener("input", retieveUserInput);
 
 function retieveUserInput() {
+  //event would go as a parameter which is a default object when usingg addEventListeners!!
   // let enteredText = counter.value;
   let enteredText = event.target.value;
+  // let enteredText = event.data;
   console.log(enteredText);
 }
