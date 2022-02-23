@@ -45,3 +45,7 @@ button {
 button:hover {
   background-color: rgb(241, 190, 58);
 }
+
+.k-pasa {
+  background-color: green;
+}

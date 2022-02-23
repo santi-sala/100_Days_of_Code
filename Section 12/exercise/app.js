@@ -11,9 +11,12 @@ function updateRemainingCharacters(e) {
 
   const remainingCharacters = maxCharacters - currentTextLenght;
 
-  if (remainingCharacters < 10) {
-    remainingCharactersElement.style.color = "red";
-    userInput.style.backgroundColor = "red";
+  if (remainingCharacters < 50) {
+    // remainingCharactersElement.style.color = "red";
+    // userInput.style.backgroundColor = "red";
+    userInput.classList.add("k-pasa");
+  } else {
+    userInput.classList.remove("k-pasa");
   }
   remainingCharactersElement.textContent = remainingCharacters;
 }
