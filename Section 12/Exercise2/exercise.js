@@ -22,7 +22,8 @@ function removeParagraph() {
 }
 //    - Output the second button WITHOUT using the variable in which it's stored
 function addBlueBackgroundColor() {
-  console.dir(firstButton.nextElementSibling.nextElementSibling);
+  //   console.dir(firstButton.nextElementSibling.nextElementSibling);
+  console.dir(event.target);
   //   firstParagraph.style.backgroundColor = "blue";
   firstParagraph.classList.add("blueBg");
 }
@@ -30,11 +31,14 @@ function addBlueBackgroundColor() {
 // 3) Now select and store the paragraphs mentioned in the text you see on the page
 
 //    (first and third paragraph)
-const toRemoveParagraph = firstButton.previousElementSibling;
+// const toRemoveParagraph = firstButton.previousElementSibling;
+const toRemoveParagraph = document.body.children[2].children[3];
 // console.log(toRemoveParagraph.textContent);
 
-const firstParagraph = document.querySelector("section p");
+// const firstParagraph = document.querySelector("section p");
+const firstParagraph = document.body.children[1];
 // console.log(firstParagraph.textContent);
+
 //    - Select BOTH paragraphs by drilling into the document and "navigating" to the
 //      mentioned elements
 //    - If you struggle with DOM drilling, use "ids" instead but watch the solution!
