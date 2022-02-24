@@ -15,8 +15,10 @@ function updateRemainingCharacters(e) {
     // remainingCharactersElement.style.color = "red";
     // userInput.style.backgroundColor = "red";
     userInput.classList.add("k-pasa");
+    remainingCharactersElement.classList.add("k-paso");
   } else {
     userInput.classList.remove("k-pasa");
+    remainingCharactersElement.classList.remove("k-paso");
   }
   remainingCharactersElement.textContent = remainingCharacters;
 }
