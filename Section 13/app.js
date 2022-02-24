@@ -1,3 +1,4 @@
+// for loops
 for (let i = 0; i < 10; i++) {
   console.log(i);
 }
@@ -20,3 +21,11 @@ for (const propertyName in loggedInUser) {
   console.log(propertyName);
   console.log(loggedInUser[propertyName]);
 }
+
+let isFinished = false;
+// while loops
+while (!isFinished) {
+  isFinished = confirm("Do you want to quit?");
+}
+
+console.log("Done!");
