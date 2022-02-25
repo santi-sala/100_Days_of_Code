@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Day40 TicTacToe</title>
+    <link rel="stylesheet" href="./styles/style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Lets play TicTacToe</h1>
+      <p>Build with HTML, CSS and Vanilla JavaScript</p>
+    </header>
+    <main>
+      <aside>
+        <h2></h2>
+        <form action="">
+          <div>
+            <label for="playername">Player name</label>
+            <input type="text" name="playername" id="playername" />
+          </div>
+          <div>
+            <button type="button">Cancel</button>
+            <button type="submit">Submit</button>
+          </div>
+        </form>
+      </aside>
+      <section id="game-configuration">
+        <ol>
+          <li>
+            <article>
+              <h2>Player 1</h2>
+              <h3>PLAYER NAME</h3>
+              <p>X</p>
+              <button>Edit</button>
+            </article>
+          </li>
+          <li>
+            <article>
+              <h2>Player 2</h2>
+              <h3>PLAYER 2 NAME</h3>
+              <p>O</p>
+              <button>Edit</button>
+            </article>
+          </li>
+        </ol>
+        <button>New Game</button>
+      </section>
+      <section id="active-game">
+        <article>
+          <h3>
+            Congratulations: <span id="winner-name">PLAYER NAME</span>, you won!
+          </h3>
+          <p>Click "Start New Game" to start new game</p>
+        </article>
+
+        <p>It's <span id="actvie-player-name">PLAYER NAME</span>'s turn!</p>
+        <ol>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ol>
+      </section>
+    </main>
+  </body>
+</html>
