@@ -58,3 +58,41 @@ function displayUserData() {
 }
 
 // STATISTICS
+const diceButton = document.querySelector("#statistics button");
+
+function rollDice() {
+  return Math.floor(Math.random() * 6) + 1;
+}
+
+function deriveNumberOfDiceRolls() {
+  const targetInputElement = document.getElementById("user-target-number");
+  const diceRollsListELement = document.getElementById("dice-rolls");
+
+  const enteredNumber = targetInputElement.value;
+  diceRollsListELement.innerHTML = "";
+
+  let hasRolledTargetNumber = false;
+  let numberOfRolls = 0;
+  while (!hasRolledTargetNumber) {
+    const rolledNumber = rollDice();
+
+    // if (rolledNumber == enteredNumber) {
+    //     hasRolledTargetNumber = true;
+    // }
+
+    hasRolledTargetNumber = rolledNumber == enteredNumber;
+    numberOfRolls++;
+    const newRollListElement = document.createElement("li");
+    newRollListElement.textContent =
+      "Roll" + numberOfRolls + ": " + rolledNumber;
+    diceRollsListELement.append(newRollListElement);
+  }
+
+  const totalDiceRollElement = document.getElementById("output-total-rolls");
+  const outputTargetElement = document.getElementById("output-target-number");
+
+  outputTargetElement.textContent = enteredNumber;
+  totalDiceRollElement.textContent = numberOfRolls;
+}
+
+diceButton.addEventListener("click", deriveNumberOfDiceRolls);
