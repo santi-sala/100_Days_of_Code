@@ -29,11 +29,32 @@ function highlightAllLinks() {
   //   allAnchorElements.forEach((element) => {
   //     element.classList.add("highlight");
   //   });
-  for (let element of allAnchorElements) {
+  for (const element of allAnchorElements) {
     element.classList.add("highlight");
   }
 }
 
 // YOUR INFORMATION
+const dummyUserData = {
+  firstName: "Pipo",
+  lastName: "Sala",
+  age: 33,
+};
+const displayUserDataButton = document.querySelector("#user-data button");
+
+displayUserDataButton.addEventListener("click", displayUserData);
+
+function displayUserData() {
+  const listOfData = document.getElementById("output-user-data");
+
+  listOfData.innerHTML = "";
+
+  for (let property in dummyUserData) {
+    const newListItem = document.createElement("li");
+    newListItem.textContent =
+      property.toLocaleUpperCase() + ": " + dummyUserData[property];
+    listOfData.append(newListItem);
+  }
+}
 
 // STATISTICS
