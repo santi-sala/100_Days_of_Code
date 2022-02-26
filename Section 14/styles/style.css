@@ -1,0 +1,47 @@
+html {
+  --grey-800: rgb(44, 41, 44);
+  --grey-200: rgb(247, 239, 247);
+  --purple-200: rgb(230, 201, 252);
+  --purple-800: rgb(140, 0, 255);
+  --purple-900: rgb(79, 10, 190);
+}
+
+body {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  color: var(--grey-800);
+  background-color: var(--grey-200);
+}
+
+#main-header {
+  background-color: var(--purple-800);
+  color: white;
+  padding: 2rem 5%;
+  text-align: center;
+}
+
+.btn {
+  font: inherit;
+  padding: 0.5rem 1.5rem;
+  background-color: var(--purple-800);
+  border: 1px solid var(--purple-800);
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: var(--purple-900);
+  border-color: var(--purple-900);
+}
+
+.btn-alternative {
+  background-color: transparent;
+  border-color: transparent;
+  color: var(--purple-800);
+}
+
+.btn-alternative:hover {
+  background-color: var(--purple-200);
+  border-color: transparent;
+}
