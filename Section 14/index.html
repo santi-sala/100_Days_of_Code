@@ -5,10 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Day40 TicTacToe</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./styles/style.css" />
   </head>
   <body>
-    <header>
+    <header id="main-header">
       <h1>Lets play TicTacToe</h1>
       <p>Build with HTML, CSS and Vanilla JavaScript</p>
     </header>
@@ -21,8 +27,8 @@
             <input type="text" name="playername" id="playername" />
           </div>
           <div>
-            <button type="button">Cancel</button>
-            <button type="submit">Submit</button>
+            <button class="btn btn-alternative" type="button">Cancel</button>
+            <button class="btn" type="submit">Submit</button>
           </div>
         </form>
       </aside>
@@ -33,7 +39,7 @@
               <h2>Player 1</h2>
               <h3>PLAYER NAME</h3>
               <p>X</p>
-              <button>Edit</button>
+              <button class="btn btn-alternative">Edit</button>
             </article>
           </li>
           <li>
@@ -41,11 +47,11 @@
               <h2>Player 2</h2>
               <h3>PLAYER 2 NAME</h3>
               <p>O</p>
-              <button>Edit</button>
+              <button class="btn btn-alternative">Edit</button>
             </article>
           </li>
         </ol>
-        <button>New Game</button>
+        <button class="btn">New Game</button>
       </section>
       <section id="active-game">
         <article>
