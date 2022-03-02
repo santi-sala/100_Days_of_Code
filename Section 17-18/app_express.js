@@ -1,3 +1,5 @@
+const fs = require("fs");
+const path = require("path");
 const express = require("express");
 
 const app = express();
@@ -16,8 +18,19 @@ app.get("/", function (request, response) {
 });
 
 app.post("/store-user", function (request, response) {
+  // Saving the user input
   const userName = request.body.username;
-  console.log(userName);
+  // Getting the file's path to any sytem
+  const filePath = path.join(__dirname, "data", "users.json");
+  // Reading and storing the data from the file
+  const currentFileData = fs.readFileSync(filePath);
+  // Parsing the JSON data
+  const existingUsers = JSON.parse(currentFileData);
+  // Adding data to the file
+  existingUsers.push(userName);
+  // Putting the data back to JSON format and storing it back to the file
+  fs.writeFileSync(filePath, JSON.stringify(existingUsers));
+
   response.send("<h1>Username stored</h1>");
 });
 
