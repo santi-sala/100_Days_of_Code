@@ -17,6 +17,22 @@ app.get("/", function (request, response) {
   );
 });
 
+app.get("/users", function (request, response) {
+  const filePath = path.join(__dirname, "data", "users.json");
+  const currentFileData = fs.readFileSync(filePath);
+  const existingUsers = JSON.parse(currentFileData);
+
+  let responseData = "<ul>";
+
+  for (const user of existingUsers) {
+    responseData += "<li>" + user + "</li>";
+  }
+
+  responseData += "</ul>";
+
+  response.send(responseData);
+});
+
 app.post("/store-user", function (request, response) {
   // Saving the user input
   const userName = request.body.username;
