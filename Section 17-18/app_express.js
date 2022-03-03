@@ -13,7 +13,7 @@ app.get("/currenttime", function (request, response) {
 // --> localhost:300
 app.get("/", function (request, response) {
   response.send(
-    '<form action="store-user" method="POST"><label>Your Name</label><input type="text" name="username"><button>Submit</button></form>'
+    '<form action="store-user" method="POST"><label>K pasa nen!!: sport</label><input type="text" name="username"><button>Submit</button></form>'
   );
 });
 
