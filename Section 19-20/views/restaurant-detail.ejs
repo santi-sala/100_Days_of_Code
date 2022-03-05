@@ -7,10 +7,10 @@
   <body>
     <%- include("includes/header") %> <%- include("includes/side-drawer") %>
     <main>
-      <h1>TITLE OF THE RESTAURANT <%= restaurantId %></h1>
-      <p>Cuisine | Address</p>
-      <p>Description of the restaurant</p>
-      <a href="">View website</a>
+      <h1><%= restaurant.name %></h1>
+      <p><%= restaurant.cuisine %> | <%= restaurant.address %></p>
+      <p><%= restaurant.description %></p>
+      <a href="<%= restaurant.website %>">View website</a>
     </main>
   </body>
 </html>

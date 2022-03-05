@@ -30,7 +30,18 @@ app.get("/restaurants", function (request, response) {
 // Dynamic route
 app.get("/restaurants/:id", function (request, response) {
   const restaurantID = request.params.id;
-  response.render("restaurant-detail", { restaurantId: restaurantID });
+
+  const filePath = path.join(__dirname, "data", "restaurants.json");
+  const fileData = fs.readFileSync(filePath);
+  const storedRestaurants = JSON.parse(fileData);
+
+  for (const currentRestaurant of storedRestaurants) {
+    if (currentRestaurant.id === restaurantID) {
+      return response.render("restaurant-detail", {
+        restaurant: currentRestaurant,
+      });
+    }
+  }
 });
 
 app.get("/about", function (request, response) {
