@@ -1,5 +1,5 @@
 {
-  "name": "web-development-complete-guide",
+  "name": "100-days-of-code",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
@@ -7,11 +7,12 @@
     "start": "nodemon app.js"
   },
   "keywords": [],
-  "author": "Maximilian Schwarzmüller (Academind GmbH)",
+  "author": "Santiago Sala (Academind course/ 100 dyas of code)",
   "license": "MIT",
   "dependencies": {
     "ejs": "^3.1.6",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "nodemon": "^2.0.7"
