@@ -26,6 +26,12 @@ app.get("/restaurants", function (request, response) {
   });
 });
 
+// Dynamic route
+app.get("/restaurants/:id", function (request, response) {
+  const restaurantID = request.params.id;
+  response.render("restaurant-detail", { restaurantId: restaurantID });
+});
+
 app.get("/about", function (request, response) {
   response.render("about");
 });
