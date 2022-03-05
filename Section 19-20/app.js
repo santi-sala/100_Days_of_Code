@@ -42,6 +42,8 @@ app.get("/restaurants/:id", function (request, response) {
       });
     }
   }
+
+  response.render("404");
 });
 
 app.get("/about", function (request, response) {
