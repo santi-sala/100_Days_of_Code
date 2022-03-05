@@ -22,6 +22,7 @@ app.get("/restaurants", function (request, response) {
   const storedRestaurants = JSON.parse(fileData);
   response.render("restaurants", {
     numberOfRestaurants: storedRestaurants.length,
+    restaurants: storedRestaurants,
   });
 });
 

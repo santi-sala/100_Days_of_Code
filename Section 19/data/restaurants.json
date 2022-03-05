@@ -1,1 +1,23 @@
-[{"name":"Pipo","address":"Pipo's restaurant","cuisine":"Filipino","website":"http://www.google.com","description":"Awesome!!"},{"name":"k pasa","address":"k pasa tu 2","cuisine":"Mexicano","website":"http://www.test.com","description":"Amazing?"},{"name":"sup","address":"yup","cuisine":"finn","website":"http://yes.com","description":"jooooo"}]
+[
+  {
+    "name": "Pipo",
+    "address": "Pipo's restaurant",
+    "cuisine": "Filipino",
+    "website": "http://www.google.com",
+    "description": "Awesome!!"
+  },
+  {
+    "name": "k pasa",
+    "address": "k pasa tu 2",
+    "cuisine": "Mexicano",
+    "website": "http://www.test.com",
+    "description": "Amazing?"
+  },
+  {
+    "name": "sup",
+    "address": "yup",
+    "cuisine": "finn",
+    "website": "http://yes.com",
+    "description": "jooooo"
+  }
+]
