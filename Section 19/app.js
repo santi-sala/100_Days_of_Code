@@ -5,31 +5,31 @@ const express = require("express");
 
 const app = express();
 
+app.set("views", path.join(__dirname, "views"));
+app.set("view engine", "ejs");
+
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: false }));
 
 app.get("/", function (request, response) {
-  let indexFilePath = path.join(__dirname, "views", "index.html");
-  response.sendFile(indexFilePath);
+  response.render("index");
 });
 
 app.get("/restaurants", function (request, response) {
-  let restaurantsFilePath = path.join(__dirname, "views", "restaurants.html");
-  response.sendFile(restaurantsFilePath);
-});
-app.get("/about", function (request, response) {
-  let aboutFilePath = path.join(__dirname, "views", "about.html");
-  response.sendFile(aboutFilePath);
-});
-app.get("/confirm", function (request, response) {
-  let confirmFilePath = path.join(__dirname, "views", "confirm.html");
-  response.sendFile(confirmFilePath);
-});
-app.get("/recommend", function (request, response) {
-  let recommendFilePath = path.join(__dirname, "views", "recommend.html");
-  response.sendFile(recommendFilePath);
+  response.render("restaurants");
 });
 
+app.get("/about", function (request, response) {
+  response.render("about");
+});
+
+app.get("/confirm", function (request, response) {
+  response.render("confirm");
+});
+
+app.get("/recommend", function (request, response) {
+  response.render("recommend");
+});
 app.post("/recommend", function (request, response) {
   const restaurant = request.body;
   const filePath = path.join(__dirname, "data", "restaurants.json");
