@@ -1,5 +1,6 @@
 function greetUser(userNAme = "user") {
-  console.log("K pasa " + userNAme + "!");
+  //   console.log("K pasa " + userNAme + "!");
+  console.log(`K pasa ${userNAme}!`);
 }
 
 greetUser("pipo");
