@@ -43,7 +43,7 @@ app.get("/restaurants/:id", function (request, response) {
     }
   }
 
-  response.render("404");
+  response.status(404).render("404");
 });
 
 app.get("/about", function (request, response) {
@@ -75,11 +75,11 @@ app.post("/recommend", function (request, response) {
 
 // Handling errors
 app.use(function (request, response) {
-  response.render("404");
+  response.status(404).render("404");
 });
 
 app.use(function (error, request, response, next) {
-  response.render("500");
+  response.status(500).render("500");
 });
 
 app.listen(3000);
