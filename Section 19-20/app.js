@@ -1,13 +1,12 @@
 // Built in packages
-const fs = require("fs");
 const path = require("path");
 
 // Third party packages
 const express = require("express");
-const uuid = require("uuid");
 
 // Own files
-const restaurantData = require("./utilities/restaurant-data");
+const defaultRoutes = require("./routes/default");
+const restaurantRoutes = require("./routes/restaurants");
 
 const app = express();
 
@@ -17,59 +16,8 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: false }));
 
-app.get("/", function (request, response) {
-  response.render("index");
-});
-
-app.get("/restaurants", function (request, response) {
-  const storedRestaurants = restaurantData.getStoredRestaurants();
-
-  response.render("restaurants", {
-    numberOfRestaurants: storedRestaurants.length,
-    restaurants: storedRestaurants,
-  });
-});
-
-// Dynamic route
-app.get("/restaurants/:id", function (request, response) {
-  const restaurantID = request.params.id;
-
-  const storedRestaurants = restaurantData.getStoredRestaurants();
-
-  for (const currentRestaurant of storedRestaurants) {
-    if (currentRestaurant.id === restaurantID) {
-      return response.render("restaurant-detail", {
-        restaurant: currentRestaurant,
-      });
-    }
-  }
-
-  response.status(404).render("404");
-});
-
-app.get("/about", function (request, response) {
-  response.render("about");
-});
-
-app.get("/confirm", function (request, response) {
-  response.render("confirm");
-});
-
-app.get("/recommend", function (request, response) {
-  response.render("recommend");
-});
-
-app.post("/recommend", function (request, response) {
-  const restaurant = request.body;
-  restaurant.id = uuid.v4();
-
-  const storedRestaurants = restaurantData.getStoredRestaurants();
-  storedRestaurants.push(restaurant);
-
-  restaurantData.storeRestaurants(storedRestaurants);
-
-  response.redirect("/confirm");
-});
+app.use("/", defaultRoutes);
+app.use("/", restaurantRoutes);
 
 // Handling errors
 app.use(function (request, response) {
