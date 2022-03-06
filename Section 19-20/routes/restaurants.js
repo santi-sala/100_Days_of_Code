@@ -6,11 +6,34 @@ const restaurantData = require("../utilities/restaurant-data");
 const router = express.Router();
 
 router.get("/restaurants", function (request, response) {
+  let order = request.query.order;
+  let nextOrder = "descending";
+
+  if (order !== "ascending" && order !== "descending") {
+    order = "ascending";
+  }
+  if (order === "descending") {
+    nextOrder = "ascending";
+  }
+
   const storedRestaurants = restaurantData.getStoredRestaurants();
+
+  storedRestaurants.sort(function (restaurantA, restaurantB) {
+    if (
+      (order === "ascending" &&
+        restaurantA.name.toLowerCase() > restaurantB.name.toLowerCase()) ||
+      (order === "descending" &&
+        restaurantB.name.toLowerCase() > restaurantA.name.toLowerCase())
+    ) {
+      return 1;
+    }
+    return -1;
+  });
 
   response.render("restaurants", {
     numberOfRestaurants: storedRestaurants.length,
     restaurants: storedRestaurants,
+    nextOrder: nextOrder,
   });
 });
 
