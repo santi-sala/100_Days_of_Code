@@ -1,8 +1,13 @@
+// Built in packages
 const fs = require("fs");
 const path = require("path");
 
+// Third party packages
 const express = require("express");
 const uuid = require("uuid");
+
+// Own files
+const restaurantData = require("./utilities/restaurant-data");
 
 const app = express();
 
@@ -17,7 +22,7 @@ app.get("/", function (request, response) {
 });
 
 app.get("/restaurants", function (request, response) {
-  const storedRestaurants = getStoredRestaurants();
+  const storedRestaurants = restaurantData.getStoredRestaurants();
 
   response.render("restaurants", {
     numberOfRestaurants: storedRestaurants.length,
@@ -29,7 +34,7 @@ app.get("/restaurants", function (request, response) {
 app.get("/restaurants/:id", function (request, response) {
   const restaurantID = request.params.id;
 
-  const storedRestaurants = getStoredRestaurants();
+  const storedRestaurants = restaurantData.getStoredRestaurants();
 
   for (const currentRestaurant of storedRestaurants) {
     if (currentRestaurant.id === restaurantID) {
@@ -58,10 +63,10 @@ app.post("/recommend", function (request, response) {
   const restaurant = request.body;
   restaurant.id = uuid.v4();
 
-  const storedRestaurants = getStoredRestaurants();
+  const storedRestaurants = restaurantData.getStoredRestaurants();
   storedRestaurants.push(restaurant);
 
-  storeRestaurants(storedRestaurants);
+  restaurantData.storeRestaurants(storedRestaurants);
 
   response.redirect("/confirm");
 });
