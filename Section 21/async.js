@@ -1,17 +1,27 @@
 const fs = require("fs/promises");
 
-function readFile() {
-  //   fs.readFile("data.txt", function (error, fileData) {
-  //     console.log("Joooooooooooooooo!!");
-  //     console.log(fileData.toString());
-  //   });
+async function readFile() {
+  let fileData;
 
-  fs.readFile("data.txt").then(function (fileData) {
-    console.log("Joooooooooooooooo!!");
-    console.log(fileData.toString());
-  });
+  // fs.readFile('data.txt', function(error, fileData) {
+  // if (error) {
+  //   // ...
+  // }
+  //   console.log('K pasa!');
+  //   console.log(fileData.toString());
+  //   // start another async task that sends the data to a database
+  // });
 
-  console.log("K pasa!");
+  try {
+    fileData = await fs.readFile("data.txt");
+  } catch (error) {
+    console.log(error);
+  }
+
+  console.log("K apasa!");
+  console.log(fileData.toString());
+  // return anotherAsyncOperation;
+  console.log("Hi there!");
 }
 
 readFile();
