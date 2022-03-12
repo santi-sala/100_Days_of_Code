@@ -51,6 +51,7 @@
   font-style: italic;
 }
 
+/* This is to preserve white spaces from the HTML!!! */
 #body {
   white-space: pre-wrap; /* This ensures that line breaks and whitespace are kept */
 }

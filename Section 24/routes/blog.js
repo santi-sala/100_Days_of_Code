@@ -50,7 +50,18 @@ router.get("/posts/:id", async function (request, response) {
   if (!posts || posts.length === 0) {
     return response.status(404).render("404");
   }
-  response.render("post-detail", { post: posts[0] });
+
+  const postData = {
+    ...posts[0],
+    date: posts[0].date.toISOString(),
+    humanReadableDate: posts[0].date.toLocaleDateString("en-US", {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    }),
+  };
+  response.render("post-detail", { post: postData });
 });
 
 module.exports = router;
