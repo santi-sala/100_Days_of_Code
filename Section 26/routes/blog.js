@@ -26,10 +26,18 @@ router.get("/posts/:id", async function (req, res) {
     .getDb()
     .collection("posts")
     .findOne({ _id: new ObjectId(postId) }, { summary: 0 });
+
   if (!post) {
     return res.status(404).render("404");
   }
-  console.log(post);
+  post.humanReadableDate = post.date.toLocaleDateString("en-US", {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+
+  post.date = post.date.toISOString();
   res.render("post-detail", { post: post });
 });
 
