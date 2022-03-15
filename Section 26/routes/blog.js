@@ -21,11 +21,18 @@ router.get("/posts", async function (req, res) {
 });
 
 router.get("/posts/:id", async function (req, res) {
-  const postId = req.params.id;
+  let postId = req.params.id;
+
+  try {
+    postId = new ObjectId(postId);
+  } catch (error) {
+    return res.status(404).render("404");
+  }
+
   const post = await db
     .getDb()
     .collection("posts")
-    .findOne({ _id: new ObjectId(postId) }, { summary: 0 });
+    .findOne({ _id: postId }, { summary: 0 });
 
   if (!post) {
     return res.status(404).render("404");
@@ -43,11 +50,18 @@ router.get("/posts/:id", async function (req, res) {
 });
 
 router.get("/posts/:id/edit", async function (req, res) {
-  const postId = req.params.id;
+  let postId = req.params.id;
+
+  try {
+    postId = new ObjectId(postId);
+  } catch (error) {
+    return res.status(404).render("404");
+  }
+
   const post = await db
     .getDb()
     .collection("posts")
-    .findOne({ _id: new ObjectId(postId) }, { title: 1, summary: 1, body: 1 });
+    .findOne({ _id: postId }, { title: 1, summary: 1, body: 1 });
 
   if (!post) {
     return res.status(404).render("404");
@@ -57,12 +71,19 @@ router.get("/posts/:id/edit", async function (req, res) {
 });
 
 router.post("/posts/:id/edit", async function (req, res) {
-  const postId = req.params.id;
+  let postId = req.params.id;
+
+  try {
+    postId = new ObjectId(postId);
+  } catch (error) {
+    return res.status(404).render("404");
+  }
+
   const result = await db
     .getDb()
     .collection("posts")
     .updateOne(
-      { _id: new ObjectId(postId) },
+      { _id: postId },
       {
         $set: {
           title: req.body.title,
@@ -82,7 +103,14 @@ router.get("/new-post", async function (req, res) {
 });
 
 router.post("/posts", async function (req, res) {
-  const authorId = new ObjectId(req.body.author);
+  let authorId = req.body.author;
+
+  try {
+    authorId = new ObjectId(authorId);
+  } catch (error) {
+    return res.status(404).render("404");
+  }
+
   const author = await db
     .getDb()
     .collection("authors")
@@ -101,12 +129,19 @@ router.post("/posts", async function (req, res) {
   };
 
   const result = await db.getDb().collection("posts").insertOne(newPost);
-  console.log(result);
+  // console.log(result);
   res.redirect("/posts");
 });
 
 router.post("/posts/:id/delete", async function (req, res) {
-  const postId = new ObjectId(req.params.id);
+  let postId = req.params.id;
+
+  try {
+    postId = new ObjectId(postId);
+  } catch (error) {
+    return res.status(404).render("404");
+  }
+
   const postToDelete = await db
     .getDb()
     .collection("posts")
