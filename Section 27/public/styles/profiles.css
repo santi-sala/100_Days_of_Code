@@ -41,3 +41,11 @@
   margin: 0.5rem 0;
 }
 
+#image-preview {
+  display: none;
+  height: 8rem;
+  width: 8rem;
+  border-radius: 100px;
+  object-fit: cover;
+  margin: 1rem auto;
+}
