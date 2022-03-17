@@ -4,20 +4,32 @@ const commentsFormElement = document.querySelector("#comments-form form");
 const commentTitleElement = document.getElementById("title");
 const commentTextElement = document.getElementById("text");
 
+// ************* Fetching Comments *************
 loadCommentsBtnElement.addEventListener("click", fetchCommentsForPost);
 
 async function fetchCommentsForPost() {
   const postId = loadCommentsBtnElement.dataset.postid;
-  const response = await fetch(`/posts/${postId}/comments`);
-  const responseData = await response.json();
 
-  if (responseData && responseData.length > 0) {
-    const commentsListElement = createCommentsList(responseData);
-    commentsSectionElement.innerText = "";
-    commentsSectionElement.appendChild(commentsListElement);
-  } else {
-    commentsSectionElement.firstElementChild.textContent =
-      "Dude no comments yet for this post. Be the first to comment!!";
+  try {
+    const response = await fetch(`/posts/${postId}/comments`);
+
+    if (!response.ok) {
+      alert("Fetching comments failed....");
+      return;
+    }
+
+    const responseData = await response.json();
+
+    if (responseData && responseData.length > 0) {
+      const commentsListElement = createCommentsList(responseData);
+      commentsSectionElement.innerText = "";
+      commentsSectionElement.appendChild(commentsListElement);
+    } else {
+      commentsSectionElement.firstElementChild.textContent =
+        "Dude no comments yet for this post. Be the first to comment!!";
+    }
+  } catch (error) {
+    alert("Failed to get comments froms the server...");
   }
 }
 
@@ -37,7 +49,9 @@ function createCommentsList(comments) {
 
   return commentListElement;
 }
+// *******************************************
 
+//  ************* Saving Comments *************
 commentsFormElement.addEventListener("submit", saveComment);
 
 async function saveComment(event) {
@@ -49,16 +63,24 @@ async function saveComment(event) {
 
   const comment = { title: enteredTitle, text: enteredText };
 
-  const response = await fetch(`/posts/${postId}/comments`, {
-    method: "POST",
-    body: JSON.stringify(comment),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
+  try {
+    const response = await fetch(`/posts/${postId}/comments`, {
+      method: "POST",
+      body: JSON.stringify(comment),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
 
-  fetchCommentsForPost();
-
-  commentTitleElement.value = "";
-  commentTextElement.value = "";
+    if (response.ok) {
+      fetchCommentsForPost();
+      commentTitleElement.value = "";
+      commentTextElement.value = "";
+    } else {
+      alert("Could not send a comment...");
+    }
+  } catch (error) {
+    alert("Could not send the request....");
+  }
 }
+// *******************************************

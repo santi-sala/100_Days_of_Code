@@ -112,6 +112,11 @@ router.post("/posts/:id/delete", async function (req, res) {
     .collection("posts")
     .deleteOne({ _id: postId });
   res.redirect("/posts");
+
+  const deleteComments = await db
+    .getDb()
+    .collection("comments")
+    .deleteMany({ postId: postId });
 });
 
 router.get("/posts/:id/comments", async function (req, res) {
@@ -135,6 +140,8 @@ router.post("/posts/:id/comments", async function (req, res) {
   };
   await db.getDb().collection("comments").insertOne(newComment);
   res.json({ message: "Comment save succesfully!" });
+
+  // res.status(500).json({ message: "Error" });
 });
 
 module.exports = router;
