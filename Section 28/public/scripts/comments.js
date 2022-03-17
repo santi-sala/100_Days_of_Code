@@ -35,11 +35,20 @@ function createCommentsList(comments) {
 
 commentsFormElement.addEventListener("submit", saveComment);
 
-function saveComment(event) {
+async function saveComment(event) {
   event.preventDefault();
+  const postId = commentsFormElement.dataset.postid;
 
   const enteredTitle = commentTitleElement.value;
   const enteredText = commentTextElement.value;
 
-  console.log(enteredTitle, enteredText);
+  const comment = { title: enteredTitle, text: enteredText };
+
+  fetch(`/posts/${postId}/comments`, {
+    method: "POST",
+    body: JSON.stringify(comment),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
 }
