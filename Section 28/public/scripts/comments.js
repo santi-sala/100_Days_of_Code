@@ -11,9 +11,14 @@ async function fetchCommentsForPost() {
   const response = await fetch(`/posts/${postId}/comments`);
   const responseData = await response.json();
 
-  const commentsListElement = createCommentsList(responseData);
-  commentsSectionElement.innerText = "";
-  commentsSectionElement.appendChild(commentsListElement);
+  if (responseData && responseData.length > 0) {
+    const commentsListElement = createCommentsList(responseData);
+    commentsSectionElement.innerText = "";
+    commentsSectionElement.appendChild(commentsListElement);
+  } else {
+    commentsSectionElement.firstElementChild.textContent =
+      "Dude no comments yet for this post. Be the first to comment!!";
+  }
 }
 
 function createCommentsList(comments) {
@@ -44,11 +49,16 @@ async function saveComment(event) {
 
   const comment = { title: enteredTitle, text: enteredText };
 
-  fetch(`/posts/${postId}/comments`, {
+  const response = await fetch(`/posts/${postId}/comments`, {
     method: "POST",
     body: JSON.stringify(comment),
     headers: {
       "Content-Type": "application/json",
     },
   });
+
+  fetchCommentsForPost();
+
+  commentTitleElement.value = "";
+  commentTextElement.value = "";
 }
