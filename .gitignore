@@ -10,3 +10,6 @@ Section 27/node_modules
 Section 28/node_modules
 Section 29/node_modules
 Section 29/package-lock.json
+Section 30/csrf/my-site/node_modules
+Section 30/csrf/my-site/package-lock.json
+Section 30/csrf/attacker-site/node_modules
