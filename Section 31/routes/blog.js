@@ -85,6 +85,7 @@ router.post("/signup", async function (req, res) {
     .collection("users")
     .findOne({ email: enteredEmail });
 
+  // Checking if the user already exists
   if (existingUser) {
     req.session.inputData = {
       hasError: true,
@@ -99,6 +100,7 @@ router.post("/signup", async function (req, res) {
     return;
   }
 
+  // Hashing the password
   const hashedPassword = await bcrypt.hash(enteredPassword, 12);
 
   const user = {
@@ -106,6 +108,7 @@ router.post("/signup", async function (req, res) {
     password: hashedPassword,
   };
 
+  // Saving the user to the database
   await db.getDb().collection("users").insertOne(user);
 
   res.redirect("/login");
@@ -121,6 +124,7 @@ router.post("/login", async function (req, res) {
     .collection("users")
     .findOne({ email: enteredEmail });
 
+  // Checking if the user is in the databse
   if (!existingUser) {
     req.session.inputData = {
       hasError: true,
@@ -134,6 +138,7 @@ router.post("/login", async function (req, res) {
     return;
   }
 
+  // Checking the password
   const passwordsAreEqual = await bcrypt.compare(
     enteredPassword,
     existingUser.password
@@ -152,6 +157,7 @@ router.post("/login", async function (req, res) {
     return;
   }
 
+  // Storing the data in the session
   req.session.user = { id: existingUser._id, email: existingUser.email };
   req.session.isAuthenticated = true;
   req.session.save(function () {
@@ -168,6 +174,7 @@ router.get("/admin", async function (req, res) {
 
   let sessionInputData = req.session.inputData;
 
+  // Validating input on the server
   if (!sessionInputData) {
     sessionInputData = {
       hasError: false,
@@ -195,6 +202,7 @@ router.post("/posts", async function (req, res) {
   const enteredTitle = req.body.title;
   const enteredContent = req.body.content;
 
+  // Server side nout validation
   if (
     !enteredTitle ||
     !enteredContent ||
