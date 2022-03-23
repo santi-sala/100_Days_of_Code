@@ -52,18 +52,6 @@ class Post {
     return result;
   }
 
-  //   async update() {
-  //     const result = await db
-  //       .getDb()
-  //       .collection("posts")
-  //       .updateOne(
-  //         { _id: this.id },
-  //         { $set: { title: this.title, content: this.content } }
-  //       );
-
-  //     return result;
-  //   }
-
   async delete() {
     if (!this.id) {
       return;
@@ -75,6 +63,18 @@ class Post {
 
     return result;
   }
+
+  //   async update() {
+  //     const result = await db
+  //       .getDb()
+  //       .collection("posts")
+  //       .updateOne(
+  //         { _id: this.id },
+  //         { $set: { title: this.title, content: this.content } }
+  //       );
+
+  //     return result;
+  //   }
 }
 
 module.exports = Post;
