@@ -10,6 +10,7 @@ const authRoutes = require("./routes/auth");
 const blogRoutes = require("./routes/blog");
 const sessionConfig = require("./config/session");
 const authMiddleware = require("./middlewares/auth-middleware");
+const addCsrfMiddleware = require("./middlewares/csrf-token-middleware");
 
 const mongodbSessionStore = sessionConfig.createSessionStore(session);
 
@@ -23,6 +24,8 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use(session(sessionConfig.createSessionConfig(mongodbSessionStore)));
 app.use(csrf());
+
+app.use(addCsrfMiddleware);
 
 // Custom middleware for checking authentication
 app.use(authMiddleware);
