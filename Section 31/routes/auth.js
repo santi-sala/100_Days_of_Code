@@ -1,8 +1,6 @@
 const express = require("express");
-const bcrypt = require("bcryptjs");
-const authControllers = require("../controllers/auth-controllers");
 
-const db = require("../data/database");
+const authControllers = require("../controllers/auth-controllers");
 
 const router = express.Router();
 
