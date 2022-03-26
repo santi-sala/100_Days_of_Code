@@ -41,12 +41,6 @@ async function createPost(req, res) {
         res.redirect("/admin");
       }
     );
-    req.session.inputData = {
-      hasError: true,
-      message: "Invalid input - please check your data.",
-      title: enteredTitle,
-      content: enteredContent,
-    };
 
     return; // or return res.redirect('/admin'); => Has the same effect
   }

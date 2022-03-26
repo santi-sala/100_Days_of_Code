@@ -1,21 +1,20 @@
 const express = require("express");
 
-const controllers = require("../controllers/post-controllers");
-const { editPost } = require("../controllers/post-controllers");
+const postControllers = require("../controllers/post-controllers");
 
 const router = express.Router();
 
 // CSRF is used here even though theres no form because the header uses csrf!! Logout has a form which sits in a header
-router.get("/", controllers.getHome);
+router.get("/", postControllers.getHome);
 
-router.get("/admin", controllers.getAdmin);
+router.get("/admin", postControllers.getAdmin);
 
-router.post("/posts", controllers.createPost);
+router.post("/posts", postControllers.createPost);
 
-router.get("/posts/:id/edit", controllers.getSinglePost);
+router.get("/posts/:id/edit", postControllers.getSinglePost);
 
-router.post("/posts/:id/edit", controllers.updatePost);
+router.post("/posts/:id/edit", postControllers.updatePost);
 
-router.post("/posts/:id/delete", controllers.deletePost);
+router.post("/posts/:id/delete", postControllers.deletePost);
 
 module.exports = router;
