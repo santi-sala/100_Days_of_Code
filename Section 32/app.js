@@ -12,6 +12,8 @@ app.set("view engine", "ejs");
 // Constructing an absolute path to views folder
 app.set("views", path.join(__dirname, "views"));
 
+app.use(express.static("public"));
+
 // Listening to auth.routes.js
 app.use(authRoutes);
 
