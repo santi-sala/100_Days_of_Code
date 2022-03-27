@@ -13,7 +13,11 @@ app.set("view engine", "ejs");
 // Constructing an absolute path to views folder
 app.set("views", path.join(__dirname, "views"));
 
+// Making the public folder availble to the final user
 app.use(express.static("public"));
+
+// Extracting values from the incomming request
+app.use(express.urlencoded({ extended: false }));
 
 // Listening to auth.routes.js
 app.use(authRoutes);
