@@ -30,7 +30,6 @@ class User {
     return db.getDb().collection("users").findOne({
       email: this.email,
     });
-    // console.log(this.email);
   }
 
   hasMatchingPassword(hashedPassword) {

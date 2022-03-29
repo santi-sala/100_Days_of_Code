@@ -32,7 +32,7 @@ async function login(req, res) {
 
   if (!existingUser) {
     res.redirect("/login");
-    console.log("user does not exist");
+
     return;
   }
 
@@ -42,7 +42,7 @@ async function login(req, res) {
 
   if (!passwordIsCorrect) {
     res.redirect("/login");
-    console.log("password incorrect");
+
     return;
   }
 
@@ -51,9 +51,15 @@ async function login(req, res) {
   });
 }
 
+function logout(req, res) {
+  authUtil.destroyUserAuthSession(req);
+  res.redirect("/login");
+}
+
 module.exports = {
   getSignup: getSignup,
   getLogin: getLogin,
   signup: signup,
   login: login,
+  logout: logout,
 };
