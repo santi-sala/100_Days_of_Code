@@ -27,9 +27,10 @@ class User {
 
   getUserWIthSameEmail() {
     // finOne yields a promise therefore no need to put async await
-    db.getDb().collection("users").findOne({
+    return db.getDb().collection("users").findOne({
       email: this.email,
     });
+    // console.log(this.email);
   }
 
   hasMatchingPassword(hashedPassword) {

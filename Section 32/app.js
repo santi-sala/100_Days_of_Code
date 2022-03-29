@@ -1,14 +1,20 @@
 // path is a build in in node, no extra package
 const path = require("path");
 
+// Packages
 const express = require("express");
 const csrf = require("csurf");
 const expressSession = require("express-session");
 
 const createSessionConfig = require("./config/session");
 const db = require("./data/database");
+
+// Middlewares
 const addCsrfTokenMiddleware = require("./middlewares/csrf-token");
 const errorHandlerMiddleware = require("./middlewares/error-handler");
+const checkAuthStatusMiddleware = require("./middlewares/check-auth");
+
+// Routes
 const authRoutes = require("./routes/auth.routes");
 const productsRoutes = require("./routes/products.routes");
 const baseRoutes = require("./routes/base.routes");
@@ -31,6 +37,7 @@ app.use(expressSession(sessionConfig));
 app.use(csrf());
 // Custom middleware that distributes the csrf tokens
 app.use(addCsrfTokenMiddleware);
+app.use(checkAuthStatusMiddleware);
 
 // Listening to routes
 app.use(baseRoutes);
