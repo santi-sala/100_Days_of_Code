@@ -6,7 +6,7 @@ function getSignup(req, res) {
   res.render("customer/auth/signup");
 }
 
-async function signup(req, res) {
+async function signup(req, res, next) {
   // req.body is available thanks to express.urlencoded middleware
   const user = new User(
     req.body.email,
@@ -17,7 +17,12 @@ async function signup(req, res) {
     req.body.city
   );
 
-  await user.signup();
+  try {
+    await user.signup();
+  } catch (error) {
+    next(error);
+    return;
+  }
 
   res.redirect("/login");
 }
@@ -26,9 +31,16 @@ function getLogin(req, res) {
   res.render("customer/auth/login");
 }
 
-async function login(req, res) {
+async function login(req, res, next) {
   const user = new User(req.body.email, req.body.password);
-  const existingUser = await user.getUserWIthSameEmail();
+
+  let existingUser;
+  try {
+    existingUser = await user.getUserWIthSameEmail();
+  } catch (error) {
+    next(error);
+    return;
+  }
 
   if (!existingUser) {
     res.redirect("/login");
