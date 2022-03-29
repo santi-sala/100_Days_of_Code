@@ -32,6 +32,15 @@ class User {
     });
   }
 
+  async userExistsAlready() {
+    const userExists = await this.getUserWIthSameEmail();
+    if (userExists) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   hasMatchingPassword(hashedPassword) {
     return bcrypt.compare(this.password, hashedPassword);
   }
