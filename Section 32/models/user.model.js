@@ -24,6 +24,17 @@ class User {
       address: this.address,
     });
   }
+
+  getUserWIthSameEmail() {
+    // finOne yields a promise therefore no need to put async await
+    db.getDb().collection("users").findOne({
+      email: this.email,
+    });
+  }
+
+  hasMatchingPassword(hashedPassword) {
+    return bcrypt.compare(this.password, hashedPassword);
+  }
 }
 
 module.exports = User;

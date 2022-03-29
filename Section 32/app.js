@@ -10,6 +10,8 @@ const db = require("./data/database");
 const addCsrfTokenMiddleware = require("./middlewares/csrf-token");
 const errorHandlerMiddleware = require("./middlewares/error-handler");
 const authRoutes = require("./routes/auth.routes");
+const productsRoutes = require("./routes/products.routes");
+const baseRoutes = require("./routes/base.routes");
 
 const app = express();
 
@@ -30,8 +32,10 @@ app.use(csrf());
 // Custom middleware that distributes the csrf tokens
 app.use(addCsrfTokenMiddleware);
 
-// Listening to auth.routes.js
+// Listening to routes
+app.use(baseRoutes);
 app.use(authRoutes);
+app.use(productsRoutes);
 
 // Error handling middleware
 app.use(errorHandlerMiddleware);
