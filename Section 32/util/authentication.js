@@ -1,7 +1,9 @@
 // Creating session for loging in
 function createUserSession(req, user, action) {
   req.session.uid = user._id.toString();
-  //   .save comses from express session package
+  // Stroing in the session for the users admin rights
+  req.session.isAdmin = user.isAdmin;
+  // .save comses from express session package
   req.session.save(action);
 }
 
