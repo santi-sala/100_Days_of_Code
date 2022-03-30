@@ -1,6 +1,8 @@
 const User = require("../models/user.model");
 const authUtil = require("../util/authentication");
 const validation = require("../util/validation.js");
+const sessionFlash = require("../util/session-flash");
+const session = require("express-session");
 
 function getSignup(req, res) {
   // Remember that the path starts from views
@@ -9,7 +11,14 @@ function getSignup(req, res) {
 
 async function signup(req, res, next) {
   // req.body is available thanks to express.urlencoded middleware
-
+  const enteredData = {
+    email: req.body.email,
+    password: req.body.password,
+    fullanme: req.body.fullname,
+    street: req.body.street,
+    postal: req.body.postal,
+    city: req.body.city,
+  };
   if (
     !validation.userDetailsAreValid(
       req.body.email,
@@ -21,7 +30,18 @@ async function signup(req, res, next) {
     ) ||
     !validation.emailIsConfirmed(req.body.email, req.body["confirm-email"])
   ) {
-    res.redirect("/signup");
+    sessionFlash.flashDataToSession(
+      req,
+      {
+        errorMessage:
+          "Invalid input data. Check your email and that your password is atleas 6 characters long.",
+        // Spreading the object to each key value pairs
+        ...enteredData,
+      },
+      function () {
+        res.redirect("/signup");
+      }
+    );
     return;
   }
 
@@ -38,7 +58,16 @@ async function signup(req, res, next) {
     const existsAlready = await user.userExistsAlready();
 
     if (existsAlready) {
-      res.redirect("/signup");
+      sessionFlash.flashDataToSession(
+        req,
+        {
+          errorMessage: "Email is already in use. Try login in instead",
+          ...enteredData,
+        },
+        function () {
+          res.redirect("/signup");
+        }
+      );
       return;
     }
     await user.signup();
@@ -55,6 +84,10 @@ function getLogin(req, res) {
 }
 
 async function login(req, res, next) {
+  // const enteredData = {
+  //   email: req.body.email,
+  //   password: req.body.password,
+  // };
   const user = new User(req.body.email, req.body.password);
   let existingUser;
 
@@ -65,8 +98,17 @@ async function login(req, res, next) {
     return;
   }
 
+  const sessionErrorData = {
+    errorMessage: "Invalid credentials. Check your email and password.",
+    // ...enteredData,
+    email: user.email,
+    password: user.password,
+  };
+
   if (!existingUser) {
-    res.redirect("/login");
+    session.flashDataToSession(req, sessionErrorData, function () {
+      res.redirect("/login");
+    });
 
     return;
   }
@@ -76,7 +118,9 @@ async function login(req, res, next) {
   );
 
   if (!passwordIsCorrect) {
-    res.redirect("/login");
+    session.flashDataToSession(req, sessionErrorData, function () {
+      res.redirect("/login");
+    });
 
     return;
   }
