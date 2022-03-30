@@ -5,16 +5,31 @@ const sessionFlash = require("../util/session-flash");
 const session = require("express-session");
 
 function getSignup(req, res) {
+  let sessionData = sessionFlash.getSessionData(req);
+
+  if (!sessionData) {
+    sessionData = {
+      email: "",
+      confirmEmail: "",
+      password: "",
+      fullname: "",
+      street: "",
+      postal: "",
+      city: "",
+    };
+  }
+
   // Remember that the path starts from views
-  res.render("customer/auth/signup");
+  res.render("customer/auth/signup", { inputData: sessionData });
 }
 
 async function signup(req, res, next) {
   // req.body is available thanks to express.urlencoded middleware
   const enteredData = {
     email: req.body.email,
+    confirmEmail: req.body["confirm-email"],
     password: req.body.password,
-    fullanme: req.body.fullname,
+    fullname: req.body.fullname,
     street: req.body.street,
     postal: req.body.postal,
     city: req.body.city,
@@ -80,7 +95,16 @@ async function signup(req, res, next) {
 }
 
 function getLogin(req, res) {
-  res.render("customer/auth/login");
+  let sessionData = sessionFlash.getSessionData(req);
+
+  if (!sessionData) {
+    sessionData = {
+      email: "",
+      password: "",
+    };
+  }
+
+  res.render("customer/auth/login", { inputData: sessionData });
 }
 
 async function login(req, res, next) {
@@ -106,7 +130,7 @@ async function login(req, res, next) {
   };
 
   if (!existingUser) {
-    session.flashDataToSession(req, sessionErrorData, function () {
+    sessionFlash.flashDataToSession(req, sessionErrorData, function () {
       res.redirect("/login");
     });
 
@@ -118,7 +142,7 @@ async function login(req, res, next) {
   );
 
   if (!passwordIsCorrect) {
-    session.flashDataToSession(req, sessionErrorData, function () {
+    sessionFlash.flashDataToSession(req, sessionErrorData, function () {
       res.redirect("/login");
     });
 
