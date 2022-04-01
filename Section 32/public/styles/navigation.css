@@ -105,7 +105,7 @@ main {
     display: block;
   }
 
-  .nav-items {
+  .nav-items button {
     color: var(--color-primary-500);
     border-color: var(--color-primary-500);
   }
