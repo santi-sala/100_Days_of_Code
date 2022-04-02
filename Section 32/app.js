@@ -27,8 +27,10 @@ app.set("view engine", "ejs");
 // Constructing an absolute path to views folder
 app.set("views", path.join(__dirname, "views"));
 
-// Making the public folder availble to the final user
+// Making the public and prodt-data folders available to the final user
 app.use(express.static("public"));
+app.use("/products/assets", express.static("product-data"));
+
 // Extracting values from the incomming request
 app.use(express.urlencoded({ extended: false }));
 

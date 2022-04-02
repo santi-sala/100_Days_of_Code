@@ -10,7 +10,14 @@
         <p><a href="/admin/products/new" class="btn">Add products</a></p>
       </section>
       <section>
-          <p>A lst of products</p>
+          <ul>
+            <% for(const product of products) { %> 
+            <li>
+              <!-- Making the product variable created in the for loop available to the include() -->
+              <%- include("includes/product-item", {product: product}) %> 
+            </li>
+            <% } %> 
+          </ul>
           
       </section>
     
