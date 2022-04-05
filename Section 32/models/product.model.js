@@ -1,3 +1,5 @@
+const mongodb = require("mongodb");
+
 const db = require("../data/database");
 
 class Product {
@@ -18,6 +20,28 @@ class Product {
   }
 
   // Static lets us call this methos without having to instantiate the class
+  static async findById(productId) {
+    let prodId;
+    try {
+      prodId = new mongodb.ObjectId(productId);
+    } catch (error) {
+      error.code = 404;
+      throw error;
+    }
+    const product = await db
+      .getDb()
+      .collection("products")
+      .findOne({ _id: prodId });
+
+    if (!product) {
+      const error = new Error("Product not found!!");
+      error.code = 404;
+      throw error;
+    }
+
+    return product;
+  }
+
   static async findAll() {
     const products = await db.getDb().collection("products").find().toArray();
 
