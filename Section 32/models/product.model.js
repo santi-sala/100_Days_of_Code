@@ -10,8 +10,7 @@ class Product {
     this.price = +productData.price;
     this.description = productData.description;
     this.image = productData.image; // name of the image file
-    this.imagePath = `product-data/images/${productData.image}`;
-    this.imageUrl = `/products/assets/images/${productData.image}`;
+    this.updateImageData();
 
     // Wrapped in a if statements so in thwe case there is a product wiyh no id it doesnt crash
     if (productData._id) {
@@ -39,7 +38,7 @@ class Product {
       throw error;
     }
 
-    return product;
+    return new Product(product);
   }
 
   static async findAll() {
@@ -50,6 +49,11 @@ class Product {
     });
   }
 
+  updateImageData() {
+    this.imagePath = `product-data/images/${this.image}`;
+    this.imageUrl = `/products/assets/images/${this.image}`;
+  }
+
   async save() {
     const productData = {
       title: this.title,
@@ -58,10 +62,27 @@ class Product {
       description: this.description,
       image: this.image,
     };
-    const result = await db
-      .getDb()
-      .collection("products")
-      .insertOne(productData);
+
+    if (this.id) {
+      const productId = mongodb.ObjectId(this.id);
+
+      // Making sure we do not override the image path in the database with undefined if there is no new image
+      if (!this.image) {
+        delete productData.image;
+      }
+
+      await db
+        .getDb()
+        .collection("products")
+        .updateOne({ _id: productId }, { $set: productData });
+    } else {
+      await db.getDb().collection("products").insertOne(productData);
+    }
+  }
+
+  replaceImage(newImage) {
+    this.image = newImage;
+    this.updateImageData();
   }
 }
 
