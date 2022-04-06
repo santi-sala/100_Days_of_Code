@@ -71,7 +71,9 @@ async function deleteProduct(req, res, next) {
     return;
   }
 
-  res.redirect("/admin/products");
+  // res.redidect would give an error as we use fetch() for sending the data to the server therefore res.json is used.
+  // res.redirect("/admin/products");
+  res.json({ message: "product deleted!!" });
 }
 
 module.exports = {
