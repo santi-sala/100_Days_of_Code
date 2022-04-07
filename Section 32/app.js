@@ -13,6 +13,7 @@ const db = require("./data/database");
 const addCsrfTokenMiddleware = require("./middlewares/csrf-token");
 const errorHandlerMiddleware = require("./middlewares/error-handler");
 const checkAuthStatusMiddleware = require("./middlewares/check-auth");
+const protectRoutesMiddleware = require("./middlewares/protect-routes");
 
 // Routes
 const authRoutes = require("./routes/auth.routes");
@@ -46,6 +47,9 @@ app.use(checkAuthStatusMiddleware);
 app.use(baseRoutes);
 app.use(authRoutes);
 app.use(productsRoutes);
+
+// Protecting from connecting manually to admin pages
+app.use(protectRoutesMiddleware);
 // Adding the /admin routes so we dont need to keep typing it in the admin.routes.js
 app.use("/admin", adminRoutes);
 
