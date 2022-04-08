@@ -7,7 +7,7 @@ class Product {
     this.title = productData.title;
     this.summary = productData.summary;
     // The + here forces the conversion to a number string to int
-    this.price = +productData.price;
+    this.price = +productData.price.toFixed(2);
     this.description = productData.description;
     this.image = productData.image; // name of the image file
     this.updateImageData();

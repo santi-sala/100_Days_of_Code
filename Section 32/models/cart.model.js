@@ -2,7 +2,7 @@ class Cart {
   constructor(items = [], totalQuantity = 0, totalPrice = 0) {
     this.items = items;
     this.totalQuantity = totalQuantity;
-    this.totalPrice = totalPrice;
+    (this.totalPrice = totalPrice).toFixed(2);
   }
 
   //   Storing in users (log in or not) session not in database
@@ -19,18 +19,18 @@ class Cart {
       //   If theres a match, increment the quantity and total price
       if (item.product.id === product.id) {
         cartItem.quantity = +item.quantity + 1;
-        cartItem.totalPrice = item.totalPrice + product.price;
+        (cartItem.totalPrice = item.totalPrice + product.price).toFixed(2);
         this.items[i] = cartItem;
 
         this.totalQuantity++;
-        this.totalPrice += product.price;
+        (this.totalPrice += product.price).toFixed(2);
         return;
       }
     }
     // If theres no match in the current cart, we add the product to the cart using the predefined cartItem
     this.items.push(cartItem);
     this.totalQuantity++;
-    this.totalPrice += product.price;
+    (this.totalPrice += product.price).toFixed(2);
   }
 
   updateItem(productId, newQuantity) {
@@ -42,17 +42,17 @@ class Cart {
         const cartItem = { ...item };
         const quantityChange = newQuantity - item.quantity;
         cartItem.quantity = newQuantity;
-        cartItem.totalPrice = newQuantity * item.product.price;
+        (cartItem.totalPrice = newQuantity * item.product.price).toFixed(2);
         this.items[i] = cartItem;
 
         this.totalQuantity = this.totalQuantity + quantityChange;
-        this.totalPrice += quantityChange * item.product.price;
+        (this.totalPrice += quantityChange * item.product.price).toFixed(2);
         return { updatedItemPrice: cartItem.totalPrice };
       } else if (item.product.id === productId && newQuantity <= 0) {
         // .splice is to remove a number of items (in this case 1) from an array starting from the provided index (i)
         this.items.splice(i, 1);
         this.totalQuantity = this.totalQuantity - item.quantity;
-        this.totalPrice -= item.totalPrice;
+        (this.totalPrice -= item.totalPrice).toFixed(2);
         return { updatedItemPrice: 0 };
       }
     }
