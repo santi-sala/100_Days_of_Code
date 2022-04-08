@@ -1,5 +1,4 @@
 const Product = require("../models/product.model");
-const { get } = require("../routes/auth.routes");
 
 function getCart(req, res) {
   res.render("customer/cart/cart");
@@ -37,11 +36,11 @@ function updateCartItem(req, res) {
   req.session.cart = cart;
 
   res.json({
-    message: "Item updated",
+    message: "Item updated!",
     updatedCartData: {
       newTotalQuantity: cart.totalQuantity,
-      newTotalPrice: cart.TotalPrice,
-      updatedItem: updatedItemData.updatedItemPrice,
+      newTotalPrice: cart.totalPrice,
+      updatedItemPrice: updatedItemData.updatedItemPrice,
     },
   });
 }
