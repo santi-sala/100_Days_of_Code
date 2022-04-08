@@ -32,6 +32,31 @@ class Cart {
     this.totalQuantity++;
     this.totalPrice += product.price;
   }
+
+  updateItem(productId, newQuantity) {
+    for (let i = 0; i < this.items.length; i++) {
+      const item = this.items[i];
+      //   If theres a match, increment the quantity and total price
+      if (item.product.id === product.id && newQuantity > 0) {
+        // Making a copy of the found --> item {...item}
+        const cartItem = { ...item };
+        const quantityChange = newQuantity - item.quantity;
+        cartItem.quantity = newQuantity;
+        cartItem.totalPrice = newQuantity * product.price;
+        this.items[i] = cartItem;
+
+        this.totalQuantity = this.totalQuantity + quantityChange;
+        this.totalPrice += quantityChange * product.price;
+        return { updatedItemPrice: cartItem.totalPrice };
+      } else if (item.product.id === product.id && newQuantity <= 0) {
+        // .splaice is to remove a number of items (in this case 1) from an array starting from the provided index (i)
+        this.items.splice(i, 1);
+        this.totalQuantity = this.totalQuantity - item.quantity;
+        this.totalPrice -= item.totalPrice;
+        return { updatedItemPrice: 0 };
+      }
+    }
+  }
 }
 
 module.exports = Cart;
