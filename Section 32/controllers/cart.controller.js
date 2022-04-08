@@ -1,4 +1,9 @@
 const Product = require("../models/product.model");
+const { get } = require("../routes/auth.routes");
+
+function getCart(req, res) {
+  res.render("customer/cart/cart");
+}
 
 async function addCartItem(req, res, next) {
   let product;
@@ -22,5 +27,6 @@ async function addCartItem(req, res, next) {
 }
 
 module.exports = {
+  getCart: getCart,
   addCartItem: addCartItem,
 };
