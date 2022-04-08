@@ -18,7 +18,7 @@ class Cart {
       const item = this.items[i];
       //   If theres a match, increment the quantity and total price
       if (item.product.id === product.id) {
-        cartItem.quantity = item.quantity + 1;
+        cartItem.quantity = +item.quantity + 1;
         cartItem.totalPrice = item.totalPrice + product.price;
         this.items[i] = cartItem;
 

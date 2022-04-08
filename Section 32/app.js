@@ -22,6 +22,7 @@ const productsRoutes = require("./routes/products.routes");
 const baseRoutes = require("./routes/base.routes");
 const adminRoutes = require("./routes/admin.routes");
 const cartRoutes = require("./routes/cart.routes");
+const ordersRoutes = require("./routes/orders.routes");
 
 const app = express();
 
@@ -55,11 +56,13 @@ app.use(checkAuthStatusMiddleware);
 app.use(baseRoutes);
 app.use(authRoutes);
 app.use(productsRoutes);
+// Adding the /cart, /orders and /admin  routes so we dont need to keep typing it in the ___.routes.js
 app.use("/cart", cartRoutes);
 
 // Protecting from connecting manually to admin pages
 app.use(protectRoutesMiddleware);
-// Adding the /admin routes so we dont need to keep typing it in the admin.routes.js
+
+app.use("/orders", ordersRoutes);
 app.use("/admin", adminRoutes);
 
 // Error handling middleware
