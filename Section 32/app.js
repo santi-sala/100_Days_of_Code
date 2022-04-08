@@ -21,6 +21,7 @@ const authRoutes = require("./routes/auth.routes");
 const productsRoutes = require("./routes/products.routes");
 const baseRoutes = require("./routes/base.routes");
 const adminRoutes = require("./routes/admin.routes");
+const cartRoutes = require("./routes/cart.routes");
 
 const app = express();
 
@@ -35,6 +36,8 @@ app.use("/products/assets", express.static("product-data"));
 
 // Extracting values from the incomming request
 app.use(express.urlencoded({ extended: false }));
+// Extracting json data from ajax requests
+app.use(express.json());
 
 const sessionConfig = createSessionConfig();
 app.use(expressSession(sessionConfig));
@@ -52,6 +55,7 @@ app.use(checkAuthStatusMiddleware);
 app.use(baseRoutes);
 app.use(authRoutes);
 app.use(productsRoutes);
+app.use("/cart", cartRoutes);
 
 // Protecting from connecting manually to admin pages
 app.use(protectRoutesMiddleware);

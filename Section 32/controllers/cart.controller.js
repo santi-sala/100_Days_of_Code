@@ -1,10 +1,10 @@
 const Product = require("../models/product.model");
 
-async function addCartItem(req, res) {
+async function addCartItem(req, res, next) {
   let product;
   try {
     // req.body because its a post request
-    product = await Product.findById(req.body.productid);
+    product = await Product.findById(req.body.productId);
   } catch (error) {
     next(error);
     return;
@@ -15,7 +15,7 @@ async function addCartItem(req, res) {
   //   Updating the data on the current session!!!
   req.session.cart = cart;
 
-  res.status(201).jason({
+  res.status(201).json({
     message: "Cart updated",
     newTotalItems: cart.totalQuantity,
   });
