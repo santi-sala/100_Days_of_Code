@@ -16,6 +16,7 @@ const checkAuthStatusMiddleware = require("./middlewares/check-auth");
 const protectRoutesMiddleware = require("./middlewares/protect-routes");
 const cartMiddleware = require("./middlewares/cart");
 const updateCartPricesMiddleware = require("./middlewares/update-cart-prices");
+const notFoundMidleware = require("./middlewares/not-found");
 
 // Routes
 const authRoutes = require("./routes/auth.routes");
@@ -61,11 +62,12 @@ app.use(productsRoutes);
 // Adding the /cart, /orders and /admin  routes so we dont need to keep typing it in the ___.routes.js
 app.use("/cart", cartRoutes);
 
-// Protecting from connecting manually to admin pages
-app.use(protectRoutesMiddleware);
+// Protecting from connecting manually to admin pages using the protectRouteMiddleware
+app.use("/orders", protectRoutesMiddleware, ordersRoutes);
+app.use("/admin", protectRoutesMiddleware, adminRoutes);
 
-app.use("/orders", ordersRoutes);
-app.use("/admin", adminRoutes);
+// Handling incorrect routes (Not errors)
+app.use(notFoundMidleware);
 
 // Error handling middleware
 app.use(errorHandlerMiddleware);
