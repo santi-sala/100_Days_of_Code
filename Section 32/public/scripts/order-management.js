@@ -2,6 +2,10 @@ const updateOrderFormElements = document.querySelectorAll(
   ".order-actions form"
 );
 
+for (const updateOrderFormElement of updateOrderFormElements) {
+  updateOrderFormElement.addEventListener("submit", updateOrder);
+}
+
 async function updateOrder(event) {
   event.preventDefault();
   const form = event.target;
@@ -38,8 +42,4 @@ async function updateOrder(event) {
 
   form.parentElement.parentElement.querySelector(".badge").textContent =
     responseData.newStatus.toUpperCase();
-}
-
-for (const updateOrderFormElement of updateOrderFormElements) {
-  updateOrderFormElement.addEventListener("submit", updateOrder);
 }

@@ -32,7 +32,7 @@ class Order {
     return orderDocuments.map(this.transformOrderDocument);
   }
 
-  static async finsAll() {
+  static async findAll() {
     const orders = await db
       .getDb()
       .collection("orders")
@@ -40,7 +40,7 @@ class Order {
       .sort({ _id: -1 })
       .toArray();
 
-    return this.transformOrderDocument(orders);
+    return this.transformOrderDocuments(orders);
   }
 
   static async findAllForUser(userId) {
