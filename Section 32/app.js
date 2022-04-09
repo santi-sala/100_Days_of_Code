@@ -15,6 +15,7 @@ const errorHandlerMiddleware = require("./middlewares/error-handler");
 const checkAuthStatusMiddleware = require("./middlewares/check-auth");
 const protectRoutesMiddleware = require("./middlewares/protect-routes");
 const cartMiddleware = require("./middlewares/cart");
+const updateCartPricesMiddleware = require("./middlewares/update-cart-prices");
 
 // Routes
 const authRoutes = require("./routes/auth.routes");
@@ -47,6 +48,7 @@ app.use(csrf());
 
 // Checking if the session contain a cart
 app.use(cartMiddleware);
+app.use(updateCartPricesMiddleware);
 
 // Custom middleware that distributes the csrf tokens
 app.use(addCsrfTokenMiddleware);

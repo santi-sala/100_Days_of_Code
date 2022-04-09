@@ -7,7 +7,7 @@ class Product {
     this.title = productData.title;
     this.summary = productData.summary;
     // The + here forces the conversion to a number string to int
-    this.price = +productData.price.toFixed(2);
+    this.price = +productData.price;
     this.description = productData.description;
     this.image = productData.image; // name of the image file
     this.updateImageData();
@@ -46,6 +46,22 @@ class Product {
 
     return products.map(function (product) {
       return new Product(product);
+    });
+  }
+
+  static async findMultiple(ids) {
+    const productIds = ids.map(function (id) {
+      return new mongodb.ObjectId(id);
+    });
+
+    const products = await db
+      .getDb()
+      .collection("products")
+      .find({ _id: { $in: productIds } })
+      .toArray();
+
+    return products.map(function (productDocument) {
+      return new Product(productDocument);
     });
   }
 
